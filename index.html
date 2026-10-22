@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام إدارة الجيم | GYM Management</title>
+    <style>
+        :root {
+            --main-color: #ff5722;
+            --bg-dark: #121212;
+            --bg-light: #1e1e1e;
+            --text-light: #ffffff;
+            --text-gray: #b3b3b3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        header {
+            background-color: var(--bg-light);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        header h1 {
+            color: var(--main-color);
+            font-size: 24px;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--main-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop') no-repeat center center/cover;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--main-color);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: var(--text-gray);
+        }
+
+        .btn {
+            background-color: var(--main-color);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #e64a19;
+        }
+
+        /* Section Global */
+        section {
+            padding: 60px 50px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--main-color);
+        }
+
+        /* Pricing Plans */
+        .plans-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .plan-card {
+            background-color: var(--bg-light);
+            padding: 40px 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 300px;
+            transition: transform 0.3s;
+            border: 1px solid #333;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--main-color);
+        }
+
+        .plan-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .plan-card .price {
+            font-size: 2rem;
+            color: var(--main-color);
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .plan-card ul {
+            list-style: none;
+            margin-bottom: 30px;
+            color: var(--text-gray);
+        }
+
+        .plan-card ul li {
+            margin-bottom: 10px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+        }
+
+        /* Form Section */
+        .registration-section {
+            background-color: var(--bg-light);
+            margin: 0 50px;
+            border-radius: 10px;
+            padding: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 5px;
+            border: 1px solid #444;
+            background-color: var(--bg-dark);
+            color: white;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--main-color);
+        }
+
+        /* Contact Section */
+        .contact-container {
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 30px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--bg-light);
+            margin-top: 50px;
+            border-top: 1px solid #333;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 15px; }
+            section { padding: 40px 20px; }
+            .registration-section { margin: 0 20px; }
+            .contact-info { flex-direction: column; gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header>
+        <h1>POWER GYM</h1>
+        <nav>
+            <a href="#about">من نحن</a>
+            <a href="#plans">الاشتراكات</a>
+            <a href="#register">انضم إلينا</a>
+            <a href="#contact">تواصل معنا</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section (Gym Profile) -->
+    <section id="about" class="hero">
+        <h2>مصنع الأبطال الحقيقي</h2>
+        <p>مرحباً بك في Power Gym، وجهتك الأولى للياقة البدنية. نوفر لك أحدث الأجهزة الرياضية، مدربين معتمدين، ومساحات مخصصة لجميع أنواع التمارين لنساعدك على الوصول لهدفك وتحقيق أفضل نسخة من نفسك.</p>
+        <a href="#plans" class="btn">اكتشف خطط الاشتراك</a>
+    </section>
+
+    <!-- Subscription Plans -->
+    <section id="plans">
+        <h2 class="section-title">خطط الاشتراك المتاحة</h2>
+        <div class="plans-container">
+            <!-- Basic Plan -->
+            <div class="plan-card">
+                <h3>الاشتراك الأساسي</h3>
+                <div class="price">400 ج.م / شهر</div>
+                <ul>
+                    <li>استخدام صالة الحديد والأجهزة</li>
+                    <li>خزانة شخصية مجانية</li>
+                    <li>دخول غير محدود طوال أيام الأسبوع</li>
+                </ul>
+                <a href="#register" class="btn" onclick="selectPlan('الأساسي')">اختر الخطة</a>
+            </div>
+
+            <!-- PPL Premium Plan -->
+            <div class="plan-card">
+                <h3>باقة المحترفين (تدريب شخصي)</h3>
+                <div class="price">800 ج.م / شهر</div>
+                <ul>
+                    <li>جدول تمارين مقسم 5 أيام (Push-Pull-Legs)</li>
+                    <li>متابعة تغذية أسبوعية</li>
+                    <li>خصم 10% على المكملات الغذائية</li>
+                </ul>
+                <a href="#register" class="btn" onclick="selectPlan('المحترفين')">اختر الخطة</a>
+            </div>
+
+            <!-- VIP Plan -->
+            <div class="plan-card">
+                <h3>اشتراك الـ VIP (سنوي)</h3>
+                <div class="price">3500 ج.م / سنة</div>
+                <ul>
+                    <li>جميع مميزات باقة المحترفين</li>
+                    <li>دخول لصالة الساونا والجاكوزي</li>
+                    <li>دعوة مجانية لصديق كل شهر</li>
+                </ul>
+                <a href="#register" class="btn" onclick="selectPlan('VIP')">اختر الخطة</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration & Payment Form -->
+    <section id="register">
+        <h2 class="section-title">اشترك الآن عبر الإنترنت</h2>
+        <div class="registration-section">
+            <form id="subscriptionForm" onsubmit="submitForm(event)">
+                <div class="form-group">
+                    <label for="fullName">الاسم الرباعي:</label>
+                    <input type="text" id="fullName" required placeholder="أدخل اسمك بالكامل">
+                </div>
+
+                <div class="form-group">
+                    <label for="address">العنوان بالكامل:</label>
+                    <input type="text" id="address" required placeholder="المحافظة - المدينة - الشارع">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">رقم الهاتف:</label>
+                    <input type="tel" id="phone" required placeholder="+2xxxxxxxxxx">
+                </div>
+
+                <div class="form-group">
+                    <label for="planSelect">خطة الاشتراك:</label>
+                    <select id="planSelect" required>
+                        <option value="" disabled selected>اختر خطة الاشتراك...</option>
+                        <option value="الأساسي">الاشتراك الأساسي (400 ج.م)</option>
+                        <option value="المحترفين">باقة المحترفين (800 ج.م)</option>
+                        <option value="VIP">اشتراك الـ VIP السنوي (3500 ج.م)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="paymentMethod">طريقة الدفع المفضلة:</label>
+                    <select id="paymentMethod" required>
+                        <option value="" disabled selected>اختر طريقة الدفع...</option>
+                        <option value="visa">بطاقة ائتمان (Visa / Mastercard)</option>
+                        <option value="wallet">محفظة إلكترونية (Vodafone Cash / QNB)</option>
+                        <option value="cash">دفع نقدي في الاستقبال (Cash)</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn" style="width: 100%; margin-top: 10px;">إتمام التسجيل والدفع</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact Support -->
+    <section id="contact" class="contact-container">
+        <h2 class="section-title">تواصل مع خدمة العملاء</h2>
+        <p style="color: var(--text-gray);">نحن هنا لمساعدتك في أي وقت. لا تتردد في التواصل معنا لأي استفسار.</p>
+        <div class="contact-info">
+            <div>
+                <h3 style="color: var(--main-color); margin-bottom: 10px;">📞 رقم الهاتف</h3>
+                <p>+2xxxxxxxxxxxxxxxxxxxx</p>
+            </div>
+            <div>
+                <h3 style="color: var(--main-color); margin-bottom: 10px;">✉️ البريد الإلكتروني</h3>
+                <p>xxxxxxxxxx@pxxxxx.xxx</p>
+            </div>
+            <div>
+                <h3 style="color: var(--main-color); margin-bottom: 10px;">📍 موقع الجيم</h3>
+                <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; 2026 - تم التطوير بواسطة المهندس أحمد</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Function to auto-select the plan from the pricing cards
+        function selectPlan(planName) {
+            const selectElement = document.getElementById('planSelect');
+            for(let i = 0; i < selectElement.options.length; i++) {
+                if(selectElement.options[i].value === planName) {
+                    selectElement.selectedIndex = i;
+                    break;
+                }
+            }
+        }
+
+        // Form submission simulation
+        function submitForm(event) {
+            event.preventDefault();
+            const name = document.getElementById('fullName').value;
+            const plan = document.getElementById('planSelect').value;
+            
+            // Simple validation and alert to show functionality
+            alert('شكراً لك يا ' + name + '!\nتم استلام طلب اشتراكك في باقة: ' + plan + ' بنجاح.\nسيتم التواصل معك قريباً لتفعيل العضوية.');
+            
+            // Reset the form
+            document.getElementById('subscriptionForm').reset();
+        }
+    </script>
+</body>
+</html>
